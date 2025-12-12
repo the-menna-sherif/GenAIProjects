@@ -1,3 +1,6 @@
+Reference:
+https://www.youtube.com/watch?v=6xYaFNhvgx8&list=PLhr0Ua8H1x-K7UMXXeSfjULEIBCE1FVd1&index=3
+
 Commiting to github via PS Terminal:
 1- First the code files (and req.txt) should all be under the project folder _not_ the venv folder. Moved them manually.
 2- On the terminal:
