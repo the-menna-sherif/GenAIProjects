@@ -23,5 +23,6 @@ Your branch is up to date with 'origin/master'.
 
 nothing to commit, working tree clean
 
-Gradio GUI
-<img width="952" height="268" alt="image" src="https://github.com/user-attachments/assets/364582cb-b871-438b-94a2-ac9a7d899c6f" />
+primitive Gradio GUI
+<img width="952" height="268" alt="image" src="https://github.com/user-attachments/assets/83602c19-13df-429a-b8d4-605c2a08b9cc" />
+
