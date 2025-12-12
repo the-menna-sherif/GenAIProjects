@@ -22,3 +22,6 @@ On branch master
 Your branch is up to date with 'origin/master'.
 
 nothing to commit, working tree clean
+
+Gradio GUI
+<img width="952" height="268" alt="image" src="https://github.com/user-attachments/assets/364582cb-b871-438b-94a2-ac9a7d899c6f" />
