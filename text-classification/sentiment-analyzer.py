@@ -11,10 +11,19 @@ analyzer = pipeline("text-classification",
 # pipe = pipeline("text-classification", 
 #                 model=model_path)
 
-print(analyzer(["This is a good product",
-                 "This was a very expensive product."])
-    )
+# print(analyzer(["This is a good product",
+#                  "This was a very expensive product."])
+#     )
 
-def sentiment_analysis(review):
+def sentiment_analyzer(review):
     sentiment = analyzer(review)
-    return sentiment
+    return sentiment[0]['label']
+
+demo = gr.Interface(
+    fn=sentiment_analyzer,
+    inputs=[gr.Textbox(label="Enter your review here", lines=4)],
+    outputs=[gr.Textbox(label="Sentiment", lines=1)],
+    title="@GenAI Project 3: Sentiment Analyzer",
+    description="Analyze the sentiment based on provided comments."
+)
+demo.launch()
