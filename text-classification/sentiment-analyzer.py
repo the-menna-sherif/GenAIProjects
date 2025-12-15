@@ -29,7 +29,7 @@ demo = gr.Interface(
 )
 # demo.launch()
 
-file_path = "C:/Users/msherif/PycharmProjects/GenAIProjects/text-classification/reviews.xlsx"
+# file_path = r"C:/Users/msherif/PycharmProjects/GenAIProjects/text-classification/reviews.xlsx"
 
 def read_reviews_analyze_sentiment(file_path):
     # load excel file into dataframe
@@ -43,6 +43,8 @@ def read_reviews_analyze_sentiment(file_path):
     df['Sentiment'] = df['Review'].apply(sentiment_analyzer)
     return df
 
-file_path = r"text-classification\Files\sample_reviews.xlsx"
+file_path = r"C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\Files\sample_reviews.xlsx"
+# the relative path would look like this:
+# file_path = r"./Files/sample_reviews.xlsx"
 result = read_reviews_analyze_sentiment(file_path)
 print(result)
