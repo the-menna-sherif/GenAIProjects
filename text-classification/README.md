@@ -26,6 +26,10 @@ Your branch is up to date with 'origin/master'.
 
 nothing to commit, working tree clean
 
-primitive Gradio GUI
+primitive Gradio GUI:
 <img width="952" height="268" alt="image" src="https://github.com/user-attachments/assets/83602c19-13df-429a-b8d4-605c2a08b9cc" />
+
+Dynamic Gradio GUI- this is after modifying the code to accept .xlsx type files and return a pandas df with the review & sentiment:
+<img width="1900" height="729" alt="image" src="https://github.com/user-attachments/assets/9952866e-f900-47be-a0d0-b264d493886e" />
+
 
