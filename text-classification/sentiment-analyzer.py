@@ -27,11 +27,16 @@ def sentiment_bar_chart(df):
     
     # create a bar chart
     fig, ax = plt.subplots()
-    sentiment_counts.plot(kind='bar', x='index', y='Sentiment', ax=ax, color=['skyblue', 'salmon'])
+    sentiment_counts.plot(kind='pie', ax=ax, color=['skyblue', 'salmon'])
     ax.set_xlabel('Sentiment')
     ax.set_ylabel('Count')
     ax.set_title('Sentiment Analysis Results')
-    ax.set_xticklabels(['Negative','Positive'], rotation=0)
+    # ax.set_xticklabels(['Negative','Positive'], rotation=0)
+
+    # debugging
+    print(type(sentiment_counts))
+    print(sentiment_counts)
+    print(sentiment_counts.columns if hasattr(sentiment_counts, "columns") else "No columns")
 
     return fig
 
@@ -83,6 +88,7 @@ demo_graphic = gr.Interface(
 
 # demo.launch()
 # demo_dynamic.launch()
+
 demo_graphic.launch()
 
 file_path = r"C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\Files\sample_reviews.xlsx"
