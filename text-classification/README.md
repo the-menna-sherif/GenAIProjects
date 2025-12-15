@@ -32,4 +32,8 @@ primitive Gradio GUI:
 Dynamic Gradio GUI- this is after modifying the code to accept .xlsx type files and return a pandas df with the review & sentiment:
 <img width="1900" height="729" alt="image" src="https://github.com/user-attachments/assets/9952866e-f900-47be-a0d0-b264d493886e" />
 
+Final Gradio GUI- after adding a visual element (bar chart- also tested with pie chart):
+<img width="956" height="491" alt="image" src="https://github.com/user-attachments/assets/ba54fc95-5ac1-46f3-b671-1256431af6da" />
+
+
 
