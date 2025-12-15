@@ -3,6 +3,7 @@ from transformers import pipeline
 import gradio as gr
 import torch
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Load a pre-trained sentiment analysis model
 # cannot have the full path if pushing the code to Hugging Face Hub
@@ -20,8 +21,19 @@ def sentiment_analyzer(review):
     sentiment = analyzer(review)
     return sentiment[0]['label']
 
+# function to create a bar chart from sentiment analysis results
+def sentiment_bar_chart(df):
+    sentiment_counts = df['Sentiment'].value_counts().reset_index()
+    
+    # create a bar chart
+    fig, ax = plt.subplots()
+    sentiment_counts.plot(kind='bar', x='index', y='Sentiment', ax=ax, color=['skyblue', 'salmon'])
+    ax.set_xlabel('Sentiment')
+    ax.set_ylabel('Count')
+    ax.set_title('Sentiment Analysis Results')
+    ax.set_xticklabels(['Negative','Positive'], rotation=0)
 
-# file_path = r"C:/Users/msherif/PycharmProjects/GenAIProjects/text-classification/reviews.xlsx"
+    return fig
 
 # function to read reviews from excel file and analyze sentiment
 # modified to accept file object from Gradio File input (no code change- just file_path to file_object)
@@ -35,7 +47,9 @@ def read_reviews_analyze_sentiment(file_object):
     
     # apply sentiment analysis on each review
     df['Sentiment'] = df['Review'].apply(sentiment_analyzer)
-    return df
+
+    chart_obj = sentiment_bar_chart(df)
+    return df, chart_obj
 
 # Prototype Gradio interface, input is a textbox, output is a textbox (based on single review analysis)
 demo = gr.Interface(
@@ -46,6 +60,7 @@ demo = gr.Interface(
     description="Analyze the sentiment based on provided comments."
 )
 
+
 # Dynamic gradio interface, input is a review excel, output is a pandas dataframe 
 # (based on multiple reviews analyses)
 demo_dynamic = gr.Interface(
@@ -55,8 +70,20 @@ demo_dynamic = gr.Interface(
     title="@GenAI Project 3: Sentiment Analyzer",
     description="Analyze the sentiment based on provided review file uploaded."
 )
+
+# Extended dynamic gradio interface, input is a review excel, output is a pandas dataframe and a bar chart
+# (based on multiple reviews analyses)
+demo_graphic = gr.Interface(
+    fn=read_reviews_analyze_sentiment,
+    inputs=[gr.File(file_types=[".xlsx"],label="Upload your review file")],
+    outputs=[gr.DataFrame(label="Sentiments"), gr.Plot(label="Sentiment Analysis Chart")],
+    title="@GenAI Project 3: Sentiment Analyzer",
+    description="Analyze the sentiment based on provided review file uploaded."
+)
+
 # demo.launch()
-demo_dynamic.launch()
+# demo_dynamic.launch()
+demo_graphic.launch()
 
 file_path = r"C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\Files\sample_reviews.xlsx"
 # the relative path would look like this:
