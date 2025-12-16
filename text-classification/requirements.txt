@@ -4,3 +4,4 @@ transformers
 pandas
 openpyxl
 matplotlib
+youtube_transcript_api
