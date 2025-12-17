@@ -23,6 +23,14 @@ Your branch is up to date with 'origin/master'.
 
 nothing to commit, working tree clean
 
+Setting up the virtual environment for dependency isolation. On a Powershell terminal:
+> python -m venv venv
+> .\venv\Scripts\Activate.ps1
+
+To import the modules from requirements.txt then confirm:
+> pip install -r .<relative path of req .txt>
+> pip list
+
 Sentiment Analyzer:
 Reference:
 https://www.youtube.com/watch?v=6xYaFNhvgx8&list=PLhr0Ua8H1x-K7UMXXeSfjULEIBCE1FVd1&index=3
@@ -36,5 +44,14 @@ Dynamic Gradio GUI- this is after modifying the code to accept .xlsx type files 
 Final Gradio GUI- after adding a visual element (bar chart- also tested with pie chart):
 <img width="956" height="491" alt="image" src="https://github.com/user-attachments/assets/ba54fc95-5ac1-46f3-b671-1256431af6da" />
 
+Youtube video summarizer (text > video)- 
+reference: 
+https://www.youtube.com/watch?v=l00VBUXl1Q4&list=PLhr0Ua8H1x-K7UMXXeSfjULEIBCE1FVd1&index=2
+
+1- Text summarizer:
+Primary running GUI:
+<img width="954" height="207" alt="image" src="https://github.com/user-attachments/assets/001a7d48-1b39-46a2-a735-968e7d3a9b60" />
+
+2- Video summarizer:
 
 
