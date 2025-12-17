@@ -1,0 +1,80 @@
+1- Gradio GUI up but throwing error:
+
+
+----->>> Terminal shows below error:
+Your max_length is set to 142, but your input_length is only 132. Since this is a summarization task, where outputs shorter than the input are typically wanted, you might consider decreasing max_length manually, e.g. summarizer('...', max_length=66)
+Traceback (most recent call last):
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\gradio\queueing.py", line 763, in process_events
+    response = await route_utils.call_process_api(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\gradio\route_utils.py", line 354, in call_process_api
+    output = await app.get_blocks().process_api(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\gradio\blocks.py", line 2125, in process_api
+    result = await self.call_function(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<8 lines>...
+    )
+    ^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\gradio\blocks.py", line 1607, in call_function
+    prediction = await anyio.to_thread.run_sync(  # type: ignore
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        fn, *processed_input, limiter=self.limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\anyio\to_thread.py", line 61, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2525, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\gradio\utils.py", line 1066, in wrapper
+    response = f(*args, **kwargs)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\text-summarizer.py", line 11, in summarize
+    output = text_summary(text)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\transformers\pipelines\text2text_generation.py", line 303, in __call__
+    return super().__call__(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\transformers\pipelines\text2text_generation.py", line 191, in __call__
+    result = super().__call__(*args, **kwargs)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\transformers\pipelines\base.py", line 1467, in __call__
+    return self.run_single(inputs, preprocess_params, forward_params, postprocess_params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\transformers\pipelines\base.py", line 1474, in run_single
+    model_outputs = self.forward(model_inputs, **forward_params)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\transformers\pipelines\base.py", line 1374, in forward
+    model_outputs = self._forward(model_inputs, **forward_params)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\transformers\pipelines\text2text_generation.py", line 220, in _forward
+    output_ids = self.model.generate(**model_inputs, **generate_kwargs)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\torch\utils\_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\transformers\generation\utils.py", line 2388, in generate
+    self._validate_model_kwargs(model_kwargs.copy())
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\text-classification\venv\Lib\site-packages\transformers\generation\utils.py", line 1599, in _validate_model_kwargs
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: The following `model_kwargs` are not used by the model: ['local_files_only'] (note: typos in the generate arguments will also show up in this list)
+
+Breakdown: 
+Checking the pipeline & transformers documentation
+https://huggingface.co/docs/transformers/en/main_classes/pipelines
+- local_files_only is not an argument especially when passed to model.generate()
+- choosing to modify the code to call the model > tokenizer > pipeline. benefits:
+1) increase control over: how the model is loaded, where it’s loaded, precision, caching behavior, torch_dtype, device_map, quantization, offline mode, etc.
+2) increased debugging 
+Rule of Thumb: "If your code lives longer than a notebook cell, don’t rely on pipeline defaults."
