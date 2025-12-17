@@ -10,5 +10,5 @@ To import the modules from requirements.txt then confirm:
 > pip list
 
 Primary running GUI:
-<img width="953" height="223" alt="image" src="https://github.com/user-attachments/assets/3541ded1-85f0-4796-9b06-880356b71e79" />
+<img width="954" height="207" alt="image" src="https://github.com/user-attachments/assets/001a7d48-1b39-46a2-a735-968e7d3a9b60" />
 
