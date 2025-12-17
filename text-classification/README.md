@@ -1,6 +1,3 @@
-Reference:
-https://www.youtube.com/watch?v=6xYaFNhvgx8&list=PLhr0Ua8H1x-K7UMXXeSfjULEIBCE1FVd1&index=3
-
 Commiting to github via PS Terminal:
 1- First the code files (and req.txt) should all be under the project folder _not_ the venv folder. Moved them manually.
 2- On the terminal:
@@ -25,6 +22,10 @@ On branch master
 Your branch is up to date with 'origin/master'.
 
 nothing to commit, working tree clean
+
+Sentiment Analyzer:
+Reference:
+https://www.youtube.com/watch?v=6xYaFNhvgx8&list=PLhr0Ua8H1x-K7UMXXeSfjULEIBCE1FVd1&index=3
 
 primitive Gradio GUI:
 <img width="952" height="268" alt="image" src="https://github.com/user-attachments/assets/83602c19-13df-429a-b8d4-605c2a08b9cc" />
