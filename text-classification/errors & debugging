@@ -191,5 +191,7 @@ Breakdown:
 Returned 200 OK
 > pip install --upgrade youtube-transcript-api
 On the latest version
-
+> import requests
+> print(requests.get("https://www.youtube.com").status_code)
+Returned same stacktrace as above.
 Definitely env issue. Possibly cuz corporate proxy/ wifi.
