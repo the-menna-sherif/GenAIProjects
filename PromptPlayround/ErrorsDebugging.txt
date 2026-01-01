@@ -1,0 +1,22 @@
+1- Trying to install the requirements threw below error:
+C:\Users\msherif\PycharmProjects\GenAIProjects\PromptPlayround> pip install -r .\requirements.txt 
+Fatal error in launcher: Unable to create process using 
+'"C:\Users\msherif\PycharmProjects\PromptPlayround\.venv\Scripts\python.exe" 
+"C:\Users\msherif\PycharmProjects\GenAIProjects\PromptPlayround\.venv\Scripts\pip.exe" 
+install -r .\requirements.txt': The system cannot find the file specified.
+
+Checked the filestructure:
+(.venv) PS C:\Users\msherif\PycharmProjects\GenAIProjects\PromptPlayround> ls 
+Directory: C:\Users\msherif\PycharmProjects\GenAIProjects\PromptPlayround 
+Mode LastWriteTime Length Name 
+---- ------------- ------ ---- 
+d----- 12/29/2025 2:14 PM .venv 
+-a---- 12/29/2025 2:13 PM 0 main.py 
+-a---- 12/29/2025 2:13 PM 0 README.md 
+-a---- 1/1/2026 1:04 PM 16 requirements.txt
+
+Checked online and found that messing around with project path leads to breaking the virtual environment. 
+.venv was created in one location, but pip.exe still points to the old/moved location...
+Fix: 
+Deleted .venv Directory from Explorer > Recreate it > Activate it > Upgrade pip > Rerun install command
+Upgrade pip command: python -m pip install --upgrade pip
