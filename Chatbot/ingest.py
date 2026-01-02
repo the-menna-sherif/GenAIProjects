@@ -5,7 +5,7 @@ from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.vectorstores import Chroma
 
 # Directory where PDFs are stored
-PDF_DIR = "data/pdfs"
+PDF_DIR = r"C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\data\pdfs"
 # Directory where Chroma vector DB will be persisted
 DB_DIR = "chroma_db"
 
