@@ -20,3 +20,27 @@ Checked online and found that messing around with project path leads to breaking
 Fix: 
 Deleted .venv Directory from Explorer > Recreate it > Activate it > Upgrade pip > Rerun install command
 Upgrade pip command: python -m pip install --upgrade pip
+
+2- Failure in Git sync. The file size was too large. "Writing objects: 1.59 GiB" is the giveaway. Standard Git (and GitHub) is not designed to handle single pushes or files in the gigabyte range
+$ git push origin master
+
+Enumerating objects: 72, done.
+Counting objects: 100% (66/66), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (44/44), done.
+error: RPC failed; curl 55 Send failure: Connection was reset
+Wsend-pack: unexpected disconnect while reading sideband packet
+Writing objects: 100% (56/56), 1.59 GiB | 1.43 MiB/s, done.
+Total 56 (delta 9), reused 0 (delta 0), pack-reused 0 (from 0)
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+
+Culprit was found: entire machine learning model weights (like pytorch_model.bin and model.safetensors).
+Added a .gitignore with:
+**/Models/
+**/*.bin
+**/*.safetensors
+.venv/
+__pycache__/
+
+Afterward, unstaged > pull > commit code ONLY

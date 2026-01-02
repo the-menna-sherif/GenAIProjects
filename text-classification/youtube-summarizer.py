@@ -1,32 +1,31 @@
-from youtube_transcript_api import YouTubeTranscriptApi
 import re
+from youtube_transcript_api import YouTubeTranscriptApi
 
-def get_video_id(url):
-    """Extract video ID from YouTube URL"""
-    pattern = r"(?:v=|youtu\.be/)([A-Za-z0-9_-]{11})"
-    match = re.search(pattern, url)
-    return match.group(1) if match else None
 
-def get_transcript(url):
-    video_id = get_video_id(url)
-    if not video_id:
-        print("Invalid YouTube URL.")
-        return
+def extract_video_id(youtube_url: str) -> str:
+    patterns = [
+        r"v=([^&]+)",
+        r"youtu\.be/([^?&]+)"
+    ]
 
-    try:
-        transcript = YouTubeTranscriptApi.list_transcripts(video_id)
-        # Try to get English transcript if available, else first one
-        try:
-            t = transcript.find_transcript(['en', 'en-US', 'auto'])
-        except:
-            t = next(iter(transcript))
-        full_text = " ".join([entry['text'] for entry in t.fetch()])
-        print("\n--- Transcript ---\n")
-        print(full_text)
-    except Exception as e:
-        print(f"Error fetching transcript: {e}")
+    for pattern in patterns:
+        match = re.search(pattern, youtube_url)
+        if match:
+            return match.group(1)
+
+    raise ValueError("Invalid YouTube URL")
+
+
+def get_transcript_from_url(youtube_url: str) -> str:
+    video_id = extract_video_id(youtube_url)
+
+    api = YouTubeTranscriptApi()
+    transcript = api.fetch(video_id)
+
+    # 👇 LEGACY OBJECT ACCESS
+    return " ".join(item.text for item in transcript)
+
 
 if __name__ == "__main__":
-    # youtube_url = input("Enter YouTube URL: ").strip()
-    youtube_url = "https://www.youtube.com/watch?v=jaYN-iwgw2g&list=PLhr0Ua8H1x-K7UMXXeSfjULEIBCE1FVd1&index=1&pp=iAQB"
-    get_transcript(youtube_url)
+    url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    print(get_transcript_from_url(url))

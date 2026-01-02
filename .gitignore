@@ -1,0 +1,29 @@
+# Python virtual environment
+venv/
+.venv/
+env/
+scripts/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Machine Learning / Libraries
+*.pyd
+*.dll
+*.so
+*.exe
+
+# Vector DB storage
+chroma/
+*.db
+
+# Machine Learning Models
+**/Models/
+*.safetensors
+*.bin
+*.h5
+*.ot
+
+# Data/PDFs (Optional - if they are large)
+Chatbot/data/pdfs/
