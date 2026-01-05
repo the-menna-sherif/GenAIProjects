@@ -45,34 +45,20 @@ def load_qa_chain():
 qa_chain = load_qa_chain()
 
 def chat(query, history):
-    result = qa_chain(query)
-    answer = result["result"]
-    history.append((query, answer))
+    answer = qa_chain.run(query)
+
+    history = history + [
+        {"role": "user", "content": query},
+        {"role": "assistant", "content": answer}
+    ]
+
     return history, history
 
-# Blocks is a top level container to put things in rows & columns
-with gr.Blocks(title="📄 Local PDF RAG Chatbot") as demo:
-    gr.Markdown("# 📄 Chat with Your PDFs (Local RAG)")
-    gr.Markdown("Ask questions grounded only in your local PDF documents.")
 
-    # Initialize chatbot section where history will be displayed
-    chatbot = gr.Chatbot(height=500)
-
-    # hidden variable which stores the conversation history
+with gr.Blocks() as demo:
+    chatbot = gr.Chatbot(type="messages")
     state = gr.State([])
-
-    with gr.Row():
-        txt = gr.Textbox(
-            show_label=False,
-            placeholder="Ask me something about your documents..."
-        )
-
-    # "txt.submit": when the user submits a query (txt), call the chat function whichcontains the llama logic (pressing enter-> submit) 
-    # also update the chatbot and state
+    txt = gr.Textbox()
     txt.submit(chat, [txt, state], [chatbot, state])
-
-    # Clear textbox after submission by setting its value to empty string using a lambda function
-    # a UX polish line
-    txt.submit(lambda: "", None, txt)
-
+    
 demo.launch()
