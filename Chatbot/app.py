@@ -45,20 +45,27 @@ def load_qa_chain():
 qa_chain = load_qa_chain()
 
 def chat(query, history):
+    # 1. Get the answer from LangChain
     answer = qa_chain.run(query)
-
-    history = history + [
-        {"role": "user", "content": query},
-        {"role": "assistant", "content": answer}
-    ]
-
+    
+    # 2. Append the new messages to the history list
+    # Gradio's gr.Chatbot in newer versions uses this list-of-dicts format
+    history.append({"role": "user", "content": query})
+    history.append({"role": "assistant", "content": answer})
+    
+    # 3. Return history for BOTH the Chatbot and the State
     return history, history
 
-
 with gr.Blocks() as demo:
-    chatbot = gr.Chatbot(type="messages")
+    chatbot = gr.Chatbot() # Explicitly set type
     state = gr.State([])
-    txt = gr.Textbox()
-    txt.submit(chat, [txt, state], [chatbot, state])
-    
+    msg = gr.Textbox()
+
+    msg.submit(user, [msg, chatbot], [msg, chatbot], queue=False).then( 
+        bot, chatbot, chatbot
+    )
+
+    # Update BOTH chatbot and state outputs
+    # txt.submit(chat, [txt, state], [chatbot, state])
+    # txt.submit(lambda: "", None, txt)
 demo.launch()
