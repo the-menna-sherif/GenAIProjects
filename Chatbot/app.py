@@ -1,8 +1,8 @@
 import gradio as gr
+from langchain_classic.chains.retrieval_qa.base import RetrievalQA
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.llms import Ollama
-from langchain.chains import RetrievalQA
 
 DB_DIR = "chroma_db"
 
