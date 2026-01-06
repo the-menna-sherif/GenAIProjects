@@ -247,3 +247,33 @@ gradio.exceptions.Error: "Data incompatible with messages format. Each message s
 Keyboard interruption in main thread... closing server.
 ```
 Unable to find RCA here yet. 
+
+4- Starting Docker Desktop: 
+WSL needs updating
+Your version of Windows Subsystem for Linux (WSL) is too old.Run the command below to update or for more information, visit .the Microsoft WSL documentation⁠
+wsl --update
+
+Steps taken:
+a) Opened PS as admin & tried to download wsl using multiple commands.
+PS C:\WINDOWS\system32> wsl --update
+Installing: Windows Subsystem for Linux
+A specified logon session does not exist. It may already have been terminated.
+PS C:\WINDOWS\system32> wsl --update --web-download
+
+b) Killed all docker & wsl sessions & staretd:
+docker kill $(docker ps -q)
+docker rm -f $(docker ps -aq)
+Get-Process | Where-Object {$_.Name -like "*Docker*"} | Stop-Process -Force
+wsl --shutdown
+
+c) Started a PS session as a regular user:
+wsl --install -d Ubuntu
+
+--> Created credentials.
+PS C:\Users\msherif> wsl -l -v
+  NAME      STATE           VERSION
+* Ubuntu    Stopped         2
+PS C:\Users\msherif> wsl --status
+Default Distribution: Ubuntu
+Default Version: 2
+Started Docker Desktop and Engine is running :)
