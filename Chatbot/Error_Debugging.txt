@@ -10,7 +10,200 @@ from langchain.chains import RetrievalQA
 To (https://reference.langchain.com/python/langchain_classic/):
 from langchain_classic.chains.retrieval_qa.base import RetrievalQA
 
-2- (.venv) PS C:\Users\msherif\PycharmProjects\GenAIProjects> python .\Chatbot\app.py
+3- (.venv) PS C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot> python .\app.py
+``` java
+C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\app.py:14: LangChainDeprecationWarning: The class `OllamaEmbeddings` was deprecated in LangChain 0.3.1 and will be removed in 1.0.0. An updated version of the class exists in the `langchain-ollama package and should be used instead. To use it run `pip install -U `langchain-ollama` and import as `from `langchain_ollama import OllamaEmbeddings``.
+  embeddings = OllamaEmbeddings(model="nomic-embed-text")
+C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\app.py:18: LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9 and will be removed in 1.0. An updated version of the class exists in the `langchain-chroma package and should be used instead. To use it run `pip install -U `langchain-chroma` and import as `from `langchain_chroma import Chroma``.
+  vectordb = Chroma(
+C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\app.py:28: LangChainDeprecationWarning: The class `Ollama` was deprecated in LangChain 0.3.1 and will be removed in 1.0.0. An updated version of the class exists in the `langchain-ollama package and should be used instead. To use it run `pip install -U `langchain-ollama` and import as `from `langchain_ollama import OllamaLLM``.
+  llm = Ollama(
+#######################################################################
+QA Chain type: <class 'langchain_classic.chains.retrieval_qa.base.RetrievalQA'>
+* Running on local URL:  http://127.0.0.1:7860
+* To create a public link, set `share=True` in `launch()`.
+error uploading: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1032)')))
+Traceback (most recent call last):
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn       
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen     
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\urllib3\connection.py", line 445, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\msherif\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\msherif\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\msherif\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\urllib3\connection.py", line 276, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn       
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001896F766660>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen     
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\urllib3\util\retry.py", line 519, in increment       
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/embeddings (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001896F766660>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\langchain_community\embeddings\ollama.py", line 167, in _process_emb_response
+    res = requests.post(
+        f"{self.base_url}/api/embeddings",
+        headers=headers,
+        json={"model": self.model, "prompt": input, **self._default_params},
+    )
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/embeddings (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001896F766660>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\gradio\queueing.py", line 766, in process_events     
+    response = await route_utils.call_process_api(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\gradio\route_utils.py", line 355, in call_process_api
+    output = await app.get_blocks().process_api(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\gradio\blocks.py", line 2147, in process_api
+    result = await self.call_function(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<8 lines>...
+    )
+    ^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\gradio\blocks.py", line 1629, in call_function       
+    prediction = await anyio.to_thread.run_sync(  # type: ignore
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        fn, *processed_input, limiter=self.limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\anyio\to_thread.py", line 61, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2525, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run       
+    result = context.run(func, *args)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\gradio\utils.py", line 1034, in wrapper
+    response = f(*args, **kwargs)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\app.py", line 47, in chat
+    result = qa_chain.invoke(
+        {"query": query}
+        )
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\langchain_classic\chains\base.py", line 167, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\langchain_classic\chains\retrieval_qa\base.py", line 151, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\langchain_classic\chains\retrieval_qa\base.py", line 275, in _get_docs
+    return self.retriever.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        question,
+        ^^^^^^^^^
+        config={"callbacks": run_manager.get_child()},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\langchain_core\retrievers.py", line 216, in invoke   
+    result = self._get_relevant_documents(
+        input, run_manager=run_manager, **kwargs_
+    )
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\langchain_core\vectorstores\base.py", line 1040, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\langchain_community\vectorstores\chroma.py", line 350, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+        query, k, filter=filter, **kwargs
+    )
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\langchain_community\vectorstores\chroma.py", line 439, in similarity_search_with_score
+    query_embedding = self._embedding_function.embed_query(query)
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\langchain_community\embeddings\ollama.py", line 227, in embed_query
+    embedding = self._embed([instruction_pair])[0]
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\langchain_community\embeddings\ollama.py", line 202, in _embed
+    return [self._process_emb_response(prompt) for prompt in iter_]
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\.venv\Lib\site-packages\langchain_community\embeddings\ollama.py", line 173, in _process_emb_response
+    raise ValueError(f"Error raised by inference endpoint: {e}")
+ValueError: Error raised by inference endpoint: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/embeddings (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001896F766660>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+Keyboard interruption in main thread... closing server.
+```
+Resolved by running ollama using ollama serve on cmd.
+
+3- (.venv) PS C:\Users\msherif\PycharmProjects\GenAIProjects> python .\Chatbot\app.py
+```java
 C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\app.py:14: LangChainDeprecationWarning: The class `OllamaEmbeddings` was deprecated in LangChain 0.3.1 and will be removed in 1.0.0. An updated version of the class exists in the `langchain-ollama package and should be used instead. To use it run `pip install -U `langchain-ollama` and import as `from `langchain_ollama import OllamaEmbeddings``.
   embeddings = OllamaEmbeddings(model="nomic-embed-text")
 C:\Users\msherif\PycharmProjects\GenAIProjects\Chatbot\app.py:19: LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9 and will be removed in 1.0. An updated version of the class exists in the `langchain-chroma package and should be used instead. To use it run `pip install -U `langchain-chroma` and import as `from `langchain_chroma import Chroma``.
@@ -52,3 +245,5 @@ data
     )
 gradio.exceptions.Error: "Data incompatible with messages format. Each message should be a dictionary with 'role' and 'content' keys or a ChatMessage object."
 Keyboard interruption in main thread... closing server.
+```
+Unable to find RCA here yet. 
