@@ -247,6 +247,14 @@ gradio.exceptions.Error: "Data incompatible with messages format. Each message s
 Keyboard interruption in main thread... closing server.
 ```
 Unable to find RCA here yet. 
+Tried chat() functions:
+a) try:
+        response = qa_chain.invoke({"query": message})
+        return response["result"]
+    except Exception as e:
+        return f"Error: {str(e)}"
+
+b) 
 
 4- Starting Docker Desktop: 
 WSL needs updating
