@@ -108,3 +108,4 @@ if __name__ == "__main__":
     demo.launch(
         share=False  # Set to True if you want a public link
     )
+print("success")
