@@ -1,5 +1,7 @@
 # Current state
-Facing issues with my Gradio GUI. Abandoning complex code and starting from success. Many issues with Gradio, considering alternatives & refreshing knowledge of Langchain.
+Facing issues with my Gradio GUI. Abandoning complex code and starting from success. Many issues with Gradio, considering alternatives & refreshing knowledge of Langchain. Code is functional. Working on a new GUI since Gradio is being excessively difficult.
+
+### Below attempts belong to testing.py code. The main app is still under construction.
 ## Primary attempt:
 Using: https://www.gradio.app/main/guides/creating-a-custom-chatbot-with-blocks#a-simple-chatbot-demo
 The current code is a bot that only responds with a random motivational message. 
