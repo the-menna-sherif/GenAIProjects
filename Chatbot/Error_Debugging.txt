@@ -246,7 +246,6 @@ data
 gradio.exceptions.Error: "Data incompatible with messages format. Each message should be a dictionary with 'role' and 'content' keys or a ChatMessage object."
 Keyboard interruption in main thread... closing server.
 ```
-Unable to find RCA here yet. 
 Tried chat() functions:
 a) try:
         response = qa_chain.invoke({"query": message})
@@ -254,7 +253,20 @@ a) try:
     except Exception as e:
         return f"Error: {str(e)}"
 
-b) 
+working--> b)  try:
+        response = qa_chain.invoke({"query": message})
+        bot_response = response["result"]
+    except Exception as e:
+        bot_response = f"Error: {str(e)}"
+    
+    # Append user message
+    history.append({"role": "user", "content": message})
+    # Append bot response
+    history.append({"role": "assistant", "content": bot_response})
+    
+    return history
+
+RCA: use dictionaries with role & keys in above function. Updated respnd function to return correct history & clears input.
 
 4- Starting Docker Desktop: 
 WSL needs updating
@@ -285,3 +297,11 @@ PS C:\Users\msherif> wsl --status
 Default Distribution: Ubuntu
 Default Version: 2
 Started Docker Desktop and Engine is running :)
+
+5- Error: Error raised by inference endpoint: 
+HTTPConnectionPool(host='localhost', port=11434): 
+Max retries exceeded with url: /api/embeddings 
+(Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000029C2443B0E0>: 
+Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+RCA: ollama wasn't running. Fixed by cmd: ollama serve.
