@@ -2,6 +2,7 @@ from langchain_core.documents import Document
 import arxiv
 from pprint import pp
 
+# function to retrieve papers from arXiv with their IDs and metadata sorted by relevance
 def paper_with_ID(query: str, k: int):
     search = arxiv.Search(query=query, max_results=k, sort_by=arxiv.SortCriterion.Relevance)
     docs = []
@@ -20,6 +21,7 @@ def paper_with_ID(query: str, k: int):
         )
     return docs
 
+# test the function
 query = "Attention Is All You Need"
 docs = paper_with_ID(query, k=2)
 
