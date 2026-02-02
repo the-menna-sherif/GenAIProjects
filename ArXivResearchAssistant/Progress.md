@@ -2,4 +2,9 @@
 
 ## Functional retrieval using the ArXiv API
 There is an output after some library & connection issues. The output is not showing the expected paper. I am still looking into why this is happening.
+
 <img width="915" height="343" alt="image" src="https://github.com/user-attachments/assets/40f483bf-b396-4f30-870b-3b0a3aebc0a2" />
+
+Added paper IDs and pretty printing the output. k=2.
+
+<img width="605" height="271" alt="image" src="https://github.com/user-attachments/assets/9e33aaa8-705e-4da9-817c-e6d9d403164a" />
