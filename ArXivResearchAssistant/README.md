@@ -116,3 +116,6 @@ arxiv_gui_assistant/
 ├── monitoring.py
 
 └── requirements.txt
+
+# Reminder on how to venv 
+
