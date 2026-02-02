@@ -118,4 +118,6 @@ arxiv_gui_assistant/
 └── requirements.txt
 
 # Reminder on how to venv 
-
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt

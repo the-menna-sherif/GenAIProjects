@@ -5,5 +5,5 @@ retriever = ArxivRetriever(
     get_full_documents=True,
 )
 
-docs = retriever.invoke("Graph Neural Networks")
-docs[0].metadata
+docs = retriever.invoke("Attention is all you need?")
+print(docs[0].metadata)
