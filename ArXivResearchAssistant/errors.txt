@@ -1,0 +1,18 @@
+1- Pretty print function call.
+Py: retrieval.py
+Error:     
+pprint.pp(docs[0].metadata)
+    ^^^^^^^^^
+AttributeError: 'function' object has no attribute 'pp'
+RCA: I am calling "pprint.pp(docs[0].metadata)". But in my environment, pprint is the function, not the module.
+WA: pp(docs[0].metadata) # function call directly
+
+2- LangChain’s ArxivRetriever is not returning full arXiv metadata
+Py: retrieval.py
+Error:   none- just a lack of any ID key
+WA: used the arxiv library instead of the ArxivRetriever one.
+
+3- Missing library
+Py: retrieval.py
+RCA: PyMuPDF python package which transforms PDF files downloaded from the arxiv.org site into the text format.
+WA: add PyMuPDF to requirements.txt
