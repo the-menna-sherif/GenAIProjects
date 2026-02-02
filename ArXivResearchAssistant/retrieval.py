@@ -22,8 +22,9 @@ def paper_with_ID(query: str, k: int):
     return docs
 
 # test the function
-query = "Attention Is All You Need"
-docs = paper_with_ID(query, k=2)
+# query = "Attention Is All You Need"
+# docs = paper_with_ID(query, k=20)
 
-pp([doc.metadata for doc in docs])
-# pp([doc.metadata["title"] for doc in docs])
+# pp([doc.metadata for doc in docs])
+# pp([[doc.metadata["id"], doc.page_content] for doc in docs])
+# pp([doc.page_content for doc in docs])
