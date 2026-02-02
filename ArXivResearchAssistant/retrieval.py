@@ -22,4 +22,6 @@ def paper_with_ID(query: str, k: int):
 
 query = "Attention Is All You Need"
 docs = paper_with_ID(query, k=2)
-pp([doc.metadata["title"] for doc in docs])
+
+pp([doc.metadata for doc in docs])
+# pp([doc.metadata["title"] for doc in docs])
