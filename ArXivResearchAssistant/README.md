@@ -11,6 +11,8 @@ Build an AI assistant where users ask a research question and it returns the Top
 
 • Monitoring + evaluation
 
+Thank you to arXiv for use of its open access interoperability. This entirely independent from arXiv, the name is just easy this way :)
+
 ## Flow
 User Question 
 
