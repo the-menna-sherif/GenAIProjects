@@ -31,4 +31,4 @@ def main(query: str,k: int):
     # pp([doc.page_content for doc in docs])
 
 if __name__=="__main__":
-    main("RSA", k=20)
+    main("RSA", k=10)
